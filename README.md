@@ -2,6 +2,7 @@
 * Add Prisma
 * Move backend services from hapi to here
 * Add Github actions 
+* Add tests
 * Add authentication layer
 * Figure out how to use runtime config in services
 
