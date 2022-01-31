@@ -32,6 +32,6 @@ export default defineNuxtConfig({
         },
       },
       publicRuntimeConfig: {
-        API_URL:  process.env.HAPI_API_URL || "http://localhost:3001"
-      },
+        API_URL:  process.env.API_URL || "http://localhost:3001"
+      },         
 })

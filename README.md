@@ -1,7 +1,10 @@
 # ToDo
-* Add to git
-* Move services from hapi to here
-* Check how to use 
+* Add Prisma
+* Move backend services from hapi to here
+* Add Github actions 
+* Add authentication layer
+* Figure out how to use runtime config in services
+
 
 # Nuxt 3 Minimal Starter
 

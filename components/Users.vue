@@ -23,7 +23,6 @@ export default {
   async mounted() {
     this.users = await listUsers();
     console.log(`I'm mounted and fetched `);
-    console.log(`I'm mounted and fetched `);
   }
 }
 </script>

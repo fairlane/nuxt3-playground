@@ -1,5 +1,5 @@
 export interface RuntimeConfiguration {
-    apiUrl: string;    
+    API_URL: string;    
 }
 
 export interface User {
