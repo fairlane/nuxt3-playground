@@ -1,16 +1,16 @@
-import { User } from "~/types/types";
+import { User } from "@prisma/client";
 import { getRuntimeConfig } from "~/config/settings"
 
 const customConfig = getRuntimeConfig();
 const listUsers = async (): Promise<User[]> => {
-    return callApi('/list-users');
+    return fetchMany('/list-users');
 }
 
 const searchUsers = async (searchTerm: string): Promise<User[]> => {
-   return callApi(`/search-users?s=${searchTerm}`);
+   return fetchMany(`/search-users?s=${searchTerm}`);
 }
 
-const callApi = async (url: string) => {
+const fetchMany = async <T>(url: string): Promise<T[]> => {
     const endpoint = customConfig.API_URL + url;
     return await (await fetch(endpoint)).json();
 }

@@ -11,11 +11,9 @@
 </div>
 </template>
 
-<script>
-import SearchUsers from './SearchUsers.vue'
-import Users from './Users.vue'
+<script lang="ts">
+import '~/assets/css/tailwind.css'
 export default {
-  name: 'Layout',
-  components: {Users, SearchUsers}
+  name: 'Layout'
 }
 </script>

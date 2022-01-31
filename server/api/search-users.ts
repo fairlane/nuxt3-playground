@@ -1,15 +1,12 @@
+import { User } from '@prisma/client';
 import type { IncomingMessage, ServerResponse } from 'http'
-import type { User } from '~/types/types'
+import { searchUsers } from '../service/users';
+import { useQuery } from "h3";
+import * as url from "url";
 
 export default async (req: IncomingMessage, res: ServerResponse): Promise<User[]> => {
-  return [
-    {
-      id: 1,
-      username: "Hapi"
-    },
-    {
-      id: 2,
-      username: "Kakkonen"
-    },
-  ];
+  // TODO - there must be an earier & cleaner way to do this 
+  const params = url.parse(req.url, true).query;
+  const {s} = params
+  return await searchUsers(s.toString());
 }

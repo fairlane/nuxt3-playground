@@ -1,15 +1,8 @@
+import { User } from '@prisma/client';
 import type { IncomingMessage, ServerResponse } from 'http'
-import type { User } from '~/types/types'
+import {listUsers} from "~/server/service/users"
 
 export default async (req: IncomingMessage, res: ServerResponse): Promise<User[]> => {
-  return [
-    {
-      id: 1,
-      username: "Hapi"
-    },
-    {
-      id: 2,
-      username: "Kakkonen"
-    },
-  ];
+  const users = await listUsers();
+  return  users;
 }

@@ -1,5 +1,5 @@
 # ToDo
-* Add Prisma
+* How are prisma models mapped as types?
 * Move backend services from hapi to here
 * Add Github actions 
 * Add tests

@@ -1,30 +1,30 @@
 <template>
-<div class="card">
-  <div class="card-header bg-info">
-    <input type="text" @keyup=search>
+<div>
+  <div class="color: orange">
+    <input type="text" v-model=searchTerm @keyup="search"> 
   </div>
-  <div class="card-body">
-    <ul v-if="searchResults.length">
-        <li v-for="user in searchResults" :key="user.id">User #{{user.id}} {{user.username}}</li>
-    </ul>
-    <p v-else>no results / search again</p>
+  <div v-if="searchResults.length">
+      <user-row :user="user" v-for="user in searchResults" :key="user.id" />
   </div>
+  <p v-else>no results / search again</p>
+  <p>Active search term: <b>{{searchTerm}}</b></p>
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import { searchUsers } from '../service/userService'
+import { User } from '@prisma/client';
 export default {
   name: 'SearchUsers',
   data() {
     return {
-      searchResults: []
+      searchResults: [] as User[],
+      searchTerm: "" as string
     }
   },
   methods: {
-    async search(term) {
-      const result = await searchUsers(term.srcElement.value); 
-      console.log(result);
+    async search() {
+      const result = await searchUsers(this.searchTerm); 
       this.searchResults = result;
     }
   }
