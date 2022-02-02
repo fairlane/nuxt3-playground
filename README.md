@@ -1,8 +1,8 @@
 # ToDo
 * Add authentication layer
-** Login
-** Composable? for fetching the user
-** Middleware? for checking the user authentication
+    * Login
+    * Composable? for fetching the user
+    * Middleware? for checking the user authentication
 * Add Github actions 
 * Add tests
 
