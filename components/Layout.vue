@@ -1,12 +1,13 @@
 <template>
-<div class="container align-center mt-2">
-  <div class="row">
-    <div class="col-md-6">
-        <users />
-    </div>
-    <div class="col-md-6 align-center">
-      <search-users />
-    </div>
+<div  class="grid grid-cols-2 gap-2 flex items-center m-20 border border-gray-200 rounded shadow p-3">
+  <div>
+      <signup />
+  </div>
+  <div>
+      <users />
+  </div>
+  <div>
+    <search-users />
   </div>
 </div>
 </template>

@@ -1,18 +1,16 @@
 <template>
-<div>
-  <div class="color: orange">
-    <input type="text" v-model=searchTerm @keyup="search"> 
+<div class="place-items-start">
+  <div>
+    Search: <input class="border rounded-t border-slate-400" type="text" v-model=searchTerm @keyup="search"> <b>{{searchTerm}}</b>
   </div>
   <div v-if="searchResults.length">
-      <user-row :user="user" v-for="user in searchResults" :key="user.id" />
+      <user-row :user="user" v-for="user in searchResults" :key="user.id" /> 
   </div>
   <p v-else>no results / search again</p>
-  <p>Active search term: <b>{{searchTerm}}</b></p>
 </div>
 </template>
 
 <script lang="ts">
-import { searchUsers } from '../service/userService'
 import { User } from '@prisma/client';
 export default {
   name: 'SearchUsers',
@@ -24,7 +22,7 @@ export default {
   },
   methods: {
     async search() {
-      const result = await searchUsers(this.searchTerm); 
+      const result = await this.$userService.searchUsers(this.searchTerm); 
       this.searchResults = result;
     }
   }

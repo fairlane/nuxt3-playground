@@ -17,7 +17,14 @@ export default defineNuxtConfig({
           { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         ]
       },
-    
+      // Does not work???
+      vue: {
+        config: {
+          productionTip: false,
+          devtools: true
+        }
+      },
+      dev: true,
       // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
       plugins: [
       ],
@@ -35,8 +42,15 @@ export default defineNuxtConfig({
             },
           },
         },
+        transpile: ['amazon-cognito-identity-js']
       },
       publicRuntimeConfig: {
-        API_URL:  process.env.API_URL || "http://localhost:3001"
+        API_URL:  process.env.API_URL || "http://localhost:3000/api",
+        AWS: {
+          COGNITO_CLIENT_ID:  process.env.AWS_COGNITO_CLIENT_ID,
+          COGNITO_POOL_ID:  process.env.AWS_COGNITO_POOL_ID
+        },
       },         
+      privateRuntimeConfig: {
+      }
 })

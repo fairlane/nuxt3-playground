@@ -1,11 +1,10 @@
 # ToDo
-* How are prisma models mapped as types?
-* Move backend services from hapi to here
+* Add authentication layer
+** Login
+** Composable? for fetching the user
+** Middleware? for checking the user authentication
 * Add Github actions 
 * Add tests
-* Add authentication layer
-* Figure out how to use runtime config in services
-
 
 # Nuxt 3 Minimal Starter
 

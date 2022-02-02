@@ -1,17 +1,31 @@
 import { User } from "@prisma/client";
-import { getRuntimeConfig } from "~/config/settings"
+import { ApiService } from "./ApiService";
 
-const customConfig = getRuntimeConfig();
-const listUsers = async (): Promise<User[]> => {
-    return fetchMany('/list-users');
-}
 
-const searchUsers = async (searchTerm: string): Promise<User[]> => {
-   return fetchMany(`/search-users?s=${searchTerm}`);
-}
+export class UserService extends ApiService<User>
+{
+    constructor(apiBase: string) {
+        super(apiBase);
+    }
 
-const fetchMany = async <T>(url: string): Promise<T[]> => {
-    const endpoint = customConfig.API_URL + url;
-    return await (await fetch(endpoint)).json();
+    async addUser(user: User): Promise<User> {
+        return await this.post('/add-user', user);
+    }
+ 
+    async confirmUser(user: User, confirmationCode: string): Promise<User> {
+        const payload = {
+            ...user,
+            confirmationCode: confirmationCode
+        };
+        console.log("PAYLOAD", payload);
+        return await this.post('/confirm-user', payload);
+    }
+ 
+    async listUsers(): Promise<User[]> {
+        return this.fetchMany('/list-users');
+    }
+
+    async searchUsers(searchTerm: string): Promise<User[]> {
+        return this.fetchMany(`/search-users?s=${searchTerm}`);
+     }
 }
-export {listUsers, searchUsers}

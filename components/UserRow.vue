@@ -1,7 +1,9 @@
 <template>
-<div class="some">
-  <div>#{{user.id}} {{user.name}} {{user.email}} </div>
-</div>
+  <div class="text-gray-700 border border-gray-200 rounded shadow p-3 mb-2">
+    <h3 class="text-gray-900 font-bold text-2l">{{user.name}}</h3>
+    <div class="text-sm">#{{user.id}}</div>
+    <div class="text-sm">{{user.email}}</div>
+  </div>
 </template>
 
 <script lang="ts">
